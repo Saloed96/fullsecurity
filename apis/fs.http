@@ -1,0 +1,297 @@
+### annasmith Students Get
+# @no-cookie-jar
+GET http://localhost:8080/api/v1/students/1
+Authorization: Basic annasmith password
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith Headers option exists", function() {
+        client.assert(response.body.hasOwnProperty("studentId"), "Cannot find 'studentId' option in response");
+    });
+%}
+
+<> 2023-07-11T133343.200.json
+<> 2023-07-10T223044.200.json
+
+
+### 2 Basic authorization.
+GET http://localhost:8080/api/v1/students/1
+Authorization: Basic linda password123
+
+###
+GET http://localhost:8080/management/api/v1/students/
+Authorization: Basic annasmith password
+
+###
+POST http://localhost:8080/management/api/v1/students/
+Authorization: Basic linda password123
+Content-Type: application/json
+
+{
+    "studentName": "Alex Gomes"
+}
+
+###
+GET http://localhost:8080/management/api/v1/students/
+Authorization: Basic tom password123
+Content-Type: application/json
+
+{
+    "studentName": "Alex Gomes"
+}
+
+
+
+
+### annasmith Students GET
+# @no-cookie-jar
+GET http://localhost:8080/api/v1/students/1
+Authorization: Basic annasmith password
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("studentId"), "Cannot find 'studentId' option in response");
+    });
+%}
+
+### annasmith MGMT Get All Students
+# @no-cookie-jar
+GET http://localhost:8080/management/api/v1/students
+Authorization: Basic annasmith password
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 403, "Response status is not 403. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+    });
+%}
+
+### annasmith MGMT Create Student
+# @no-cookie-jar
+POST http://localhost:8080/management/api/v1/students
+Authorization: Basic annasmith password
+Content-Type: application/json
+
+{
+  "studentName": "Alex Gomes"
+}
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 403, "Response status is not 403. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+    });
+%}
+
+### annasmith MGMT Update Student
+# @no-cookie-jar
+PUT http://localhost:8080/management/api/v1/students/3
+Authorization: Basic annasmith password
+Content-Type: application/json
+
+{
+  "studentName": "Alex Gomes"
+}
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 403, "Response status is not 403. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+    });
+%}
+
+### annasmith MGMT Delete Student
+# @no-cookie-jar
+DELETE http://localhost:8080/management/api/v1/students/2
+Authorization: Basic annasmith password
+Content-Type: application/json
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 403, "Response status is not 403. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+    });
+%}
+
+
+
+
+### Linda Students GET
+# @no-cookie-jar
+GET http://localhost:8080/api/v1/students/1
+Authorization: Basic annasmith password
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("studentId"), "Cannot find 'studentId' option in response");
+    });
+%}
+
+### Linda MGMT Get All Students
+# @no-cookie-jar
+GET http://localhost:8080/management/api/v1/students
+Authorization: Basic annasmith password
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 403, "Response status is not 403. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+    });
+%}
+
+### Linda MGMT Create Student
+# @no-cookie-jar
+POST http://localhost:8080/management/api/v1/students
+Authorization: Basic annasmith password
+Content-Type: application/json
+
+{
+  "studentName": "Alex Gomes"
+}
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 403, "Response status is not 403. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+    });
+%}
+
+### Linda MGMT Update Student
+# @no-cookie-jar
+PUT http://localhost:8080/management/api/v1/students/3
+Authorization: Basic annasmith password
+Content-Type: application/json
+
+{
+  "studentName": "Alex Gomes"
+}
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 403, "Response status is not 403. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+    });
+%}
+
+### Linda MGMT Delete Student
+# @no-cookie-jar
+DELETE http://localhost:8080/management/api/v1/students/2
+Authorization: Basic annasmith password
+Content-Type: application/json
+
+> {%
+    client.test("annasmith executed successfully", function() {
+        client.assert(response.status === 403, "Response status is not 403. it is '" + response.status + "'");
+    });
+
+    client.test("annasmith content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("annasmith studentId field exists", function() {
+        client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+    });
+%}
+
+
+### Linda JWT MGMT Login
+POST http://localhost:8080/login
+#Authorization: Basic Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaW5kYSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJzdHVkZW50OndyaXRlIn0seyJhdXRob3JpdHkiOiJzdHVkZW50OnJlYWQifSx7ImF1dGhvcml0eSI6ImNvdXJzZTpyZWFkIn0seyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn0seyJhdXRob3JpdHkiOiJjb3Vyc2U6d3JpdGUifV0sImlhdCI6MTY4OTE5NDUzMiwiZXhwIjoxNjkwMzIyNDAwfQ.13H9uErIGKzfFVXTsIwbceSIndqFxMcFaokAvU2Ubf9lfObEqD9nbJD3xRPzJlAq
+Content-Type: application/json
+
+{
+  "username": "linda",
+  "password": "password123"
+}
+
+
+### Linda JWT MGMT Create Student
+GET http://localhost:8080/management/api/v1/students
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaW5kYSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJzdHVkZW50OndyaXRlIn0seyJhdXRob3JpdHkiOiJzdHVkZW50OnJlYWQifSx7ImF1dGhvcml0eSI6ImNvdXJzZTpyZWFkIn0seyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn0seyJhdXRob3JpdHkiOiJjb3Vyc2U6d3JpdGUifV0sImlhdCI6MTY4OTE5Nzc5MiwiZXhwIjoxNjkwMzIyNDAwfQ.dD1_Pk7o72UgAlL7nyWWvwwZd3exCEkh1Wm6md9p6Mf8iqTfHRaLLcaN_kAfMId1
+Content-Type: application/json
+
+<> 2023-07-12T233700.200.json
+
